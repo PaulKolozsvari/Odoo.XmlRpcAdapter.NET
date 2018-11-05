@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.27004.2005
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Odoo.XmlRpcAdapter", "Odoo.XmlRpcAdapter\Odoo.XmlRpcAdapter.csproj", "{EE66DE91-811D-41C7-BAE4-AB1F9AF1C8F5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Odoo.XmlRpcAdapter.TestDriver", "Odoo.XmlRpcAdapter.TestDriver\Odoo.XmlRpcAdapter.TestDriver.csproj", "{F738689B-8994-4462-AB81-4B4669B05260}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Odoo.XmlRpcAdapter.Sample", "Odoo.XmlRpcAdapter.Sample\Odoo.XmlRpcAdapter.Sample.csproj", "{F738689B-8994-4462-AB81-4B4669B05260}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
