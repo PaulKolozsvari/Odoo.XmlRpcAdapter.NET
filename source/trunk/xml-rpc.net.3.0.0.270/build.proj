@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+ 
+  <!--
+  Project for building a release distribution
+  - requires Subversion client - configure in ToolPath of SvnExports
+  -->
+ 
+  <PropertyGroup>
+    <ProductVersion>3.0 snapshot</ProductVersion>
+    <ProductMajor>3</ProductMajor>
+    <ProductMinor>0</ProductMinor>
+    <ProductRevision>0</ProductRevision>
+    <ProductSuffix>-snapshot</ProductSuffix>
+    <GetFiles>yes</GetFiles>
+    <PhoneBuild>yes</PhoneBuild>
+    <BuildDir>$(MSBuildProjectDirectory)\build</BuildDir>
+  </PropertyGroup>
+ 
+  <PropertyGroup>
+    <BuildFiles>$(BuildDir)\buildfiles</BuildFiles>
+    <OutputFiles>$(BuildDir)\outputfiles</OutputFiles>
+    <OutputSrc>$(OutputFiles)\xml-rpc.net.$(ProductMajor).$(ProductMinor).$(ProductRevision)</OutputSrc>
+    <MSBuildCommunityTasksPath>$(MSBuildProjectDirectory)\tools\CommunityTasks\</MSBuildCommunityTasksPath>
+    <NUnitToolPath>$(MSBuildProjectDirectory)\tools\NUnit\</NUnitToolPath>
+    <KeyFile>CookComputing.key</KeyFile>
+  </PropertyGroup>
+ 
+  <Import Project="tools\CommunityTasks\MSBuild.Community.Tasks.Targets"/>
+ 
+  <Target Name="GetFiles" Condition="$(GetFiles) == 'yes'">
+    <RemoveDir Directories="$(BuildDir)" />
+    <SvnExport
+        RepositoryPath="https://xmlrpcnet.googlecode.com/svn/trunk"
+        LocalPath="$(OutputSrc)"
+        ToolPath="C:\Program Files\SlikSvn\bin">
+      <Output
+          TaskParameter="Revision"
+          PropertyName="Revision" />
+    </SvnExport>
+    <ItemGroup>
+      <OutputSourceFiles Include="$(OutputSrc)\**\*.*"/>
+    </ItemGroup>
+    <Copy
+      SourceFiles="@(OutputSourceFiles)"
+      DestinationFiles="@(OutputSourceFiles->'$(BuildFiles)\%(RecursiveDir)%(Filename)%(Extension)')"
+    />
+    <AssemblyInfo CodeLanguage="CS"
+      OutputFile="$(BuildFiles)\src\AssemblyBuildNumber.cs"
+      AssemblyVersion="$(ProductMajor).$(ProductMinor).0.0"
+      AssemblyInformationalVersion="$(ProductVersion)"
+      AssemblyFileVersion="$(ProductMajor).$(ProductMinor).$(ProductRevision).$(Revision)"
+    />
+    <Copy
+        SourceFiles="README.template"
+        DestinationFiles="$(OutputSrc)\README.txt"
+    />
+    <FileUpdate
+        Files="$(OutputSrc)\README.txt"
+        Regex="v\d+\.\d+\.\d+ Release"
+        ReplacementText="v$(ProductMajor).$(ProductMinor).$(ProductRevision) Release"
+    />
+  </Target>
+ 
+  <Target Name="MainBuild" DependsOnTargets="GetFiles">
+    <Message Text="Starting to Build in $(BuildFiles)"/>
+    <Error Text="Please supply your own key file CookComputing.key in build directory"
+       Condition = "!Exists('$(KeyFile)')"/>
+    <RemoveDir Directories="$(BuildFiles)\bin" />
+    <MSBuild
+        Projects="$(BuildFiles)\xml-rpc.net.sln"
+        Properties="Configuration=Release;SignAssembly=true;AssemblyOriginatorKeyFile=$(MSBuildProjectDirectory)\$(KeyFile)"
+    />
+  </Target>
+ 
+  <Target Name="PhoneBuild" DependsOnTargets="GetFiles" Condition="$(PhoneBuild) == 'yes'">
+    <Message Text="Starting to Build in $(BuildFiles)"/>
+    <MSBuild
+        Projects="$(BuildFiles)\xmlrpcwp\xmlrpcwp.sln"
+        Properties="Configuration=Release;SignAssembly=true;AssemblyOriginatorKeyFile=$(MSBuildProjectDirectory)\$(KeyFile)"
+    />
+  </Target>
+ 
+  <Target Name="CleanBuild">
+    <RemoveDir Directories="$(BuildFiles)\bin" />
+    <ItemGroup>
+      <BinFiles Include="$(BuildFiles)\**\obj\**\*.*" />
+    </ItemGroup>
+    <Delete Files="@(BinFiles)" />
+  </Target>
+ 
+  <Target Name="Build" DependsOnTargets="CleanBuild;MainBuild;PhoneBuild">
+  </Target>
+ 
+  <Target Name="Test" DependsOnTargets="Build">
+    <NUnit Assemblies="$(BuildFiles)\bin\ntest.dll" ToolPath="$(NUnitToolPath)" />
+  </Target>
+ 
+  <Target Name="Package" DependsOnTargets="Test">
+    <ItemGroup>
+      <BinFiles Include="$(BuildFiles)\bin\*"/>
+    </ItemGroup>
+    <Copy
+       SourceFiles="@(BinFiles)"
+       DestinationFolder="$(OutputSrc)\bin"
+     />
+    <RemoveDir Directories="$(OutputSrc)\website" />
+    <RemoveDir Directories="$(OutputSrc)\tools\CommunityTasks" />
+    <RemoveDir Directories="$(OutputSrc)\bin\testdocuments" />
+
+    <ItemGroup>
+      <FilesToDelete Include="$(OutputSrc)\README.template" />
+      <FilesToDelete Include="$(OutputSrc)\**\*FileListAbsolute.txt" />
+    </ItemGroup>
+    <Delete Files="@(FilesToDelete)" />
+    
+    <ItemGroup>
+      <ZipFiles Include="$(OutputFiles)\**" />
+    </ItemGroup>
+    <Zip Files="@(ZipFiles)" WorkingDirectory="$(OutputFiles)"
+      ZipFileName="$(BuildDir)\xml-rpc.net.$(ProductMajor).$(ProductMinor).$(ProductRevision).$(Revision)$(ProductSuffix).zip">
+    </Zip>
+  </Target>
+ 
+  <Target Name="Release" DependsOnTargets="Package" />
+ 
+</Project>

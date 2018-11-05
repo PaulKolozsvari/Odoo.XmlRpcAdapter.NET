@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6E73A11C-9595-4C6C-93C2-760BFEA37A1A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ntest</RootNamespace>
+    <AssemblyName>ntest</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <NoWarn>649;169</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <NoWarn>649;169</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CookComputing.XmlRpcServerV2, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="CookComputing.XmlRpcV2, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>..\tools\NUnit\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Remoting" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="acceptencodingclient.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="deserializerequesttest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="deserializeresponsetest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="EnumStringInterfaceMapping.cs" />
+    <Compile Include="enumtest.cs" />
+    <Compile Include="enumtestserver.cs" />
+    <Compile Include="invoketest.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ArrayTest.cs" />
+    <Compile Include="Listener.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="listenertest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="NilTest.cs" />
+    <Compile Include="NilTestServer.cs" />
+    <Compile Include="optionalserializetest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="paramstest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="parsetest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="proxygentest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="remotingservertest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="serializeresponsetest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="serializetest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ServerProtocol.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="serviceinfotest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StateNameListener.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StateNameService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="utils.cs" />
+    <Compile Include="XmlRpcParserTest.cs" />
+    <Compile Include="XmlRpcStructTest.cs" />
+    <Compile Include="XmlRpcType.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="testdocuments\iso-8859-1_request.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="testdocuments\iso-8859-1_response.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,187 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7238D157-41BC-4F51-B3FA-AB250CA35BFF}</ProjectGuid>
+    <ProjectTypeGuids>{C089C8C0-30E0-4E22-80C0-CE093F111A43};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>xmlrpcwp</RootNamespace>
+    <AssemblyName>CookComputing.XmlRpcPhone</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <TargetFrameworkProfile>WindowsPhone</TargetFrameworkProfile>
+    <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
+    <SilverlightApplication>false</SilverlightApplication>
+    <ValidateXaml>true</ValidateXaml>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\bin\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;SILVERLIGHT;WINDOWS_PHONE;COMPACT_FRAMEWORK</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\bin\</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE;COMPACT_FRAMEWORK</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System.Windows" />
+    <Reference Include="system" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Net" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\src\DateTime8601.cs">
+      <Link>DateTime8601.cs</Link>
+    </Compile>
+    <Compile Include="..\src\GuidEx.cs">
+      <Link>GuidEx.cs</Link>
+    </Compile>
+    <Compile Include="..\src\IXmlRpcProxy.cs">
+      <Link>IXmlRpcProxy.cs</Link>
+    </Compile>
+    <Compile Include="..\src\MappingActions.cs">
+      <Link>MappingActions.cs</Link>
+    </Compile>
+    <Compile Include="..\src\MappingStack.cs">
+      <Link>MappingStack.cs</Link>
+    </Compile>
+    <Compile Include="..\src\util.cs">
+      <Link>util.cs</Link>
+    </Compile>
+    <Compile Include="..\src\WebSettings.cs">
+      <Link>WebSettings.cs</Link>
+    </Compile>
+    <Compile Include="..\src\XmlRpcAsyncResult.cs">
+      <Link>XmlRpcAsyncResult.cs</Link>
+    </Compile>
+    <Compile Include="..\src\XmlRpcBeginAttribute.cs">
+      <Link>XmlRpcBeginAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\src\XmlRpcClientProtocol.cs">
+      <Link>XmlRpcClientProtocol.cs</Link>
+    </Compile>
+    <Compile Include="..\src\XmlRpcDeserializer.cs">
+      <Link>XmlRpcDeserializer.cs</Link>
+    </Compile>
+    <Compile Include="..\src\XmlRpcEndAttribute.cs">
+      <Link>XmlRpcEndAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\src\XmlRpcEnumMapping.cs">
+      <Link>XmlRpcEnumMapping.cs</Link>
+    </Compile>
+    <Compile Include="..\src\XmlRpcException.cs">
+      <Link>XmlRpcException.cs</Link>
+    </Compile>
+    <Compile Include="..\src\XmlRpcFaultException.cs">
+      <Link>XmlRpcFaultException.cs</Link>
+    </Compile>
+    <Compile Include="..\src\XmlRpcFormatSettings.cs">
+      <Link>XmlRpcFormatSettings.cs</Link>
+    </Compile>
+    <Compile Include="..\src\XmlRpcLogger.cs">
+      <Link>XmlRpcLogger.cs</Link>
+    </Compile>
+    <Compile Include="..\src\XmlRpcMemberAttribute.cs">
+      <Link>XmlRpcMemberAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\src\XmlRpcMethodAttribute.cs">
+      <Link>XmlRpcMethodAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\src\XmlRpcMethodInfo.cs">
+      <Link>XmlRpcMethodInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\src\XmlRpcMissingMappingAttribute.cs">
+      <Link>XmlRpcMissingMappingAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\src\XmlRpcNonStandard.cs">
+      <Link>XmlRpcNonStandard.cs</Link>
+    </Compile>
+    <Compile Include="..\src\XmlRpcNullMappingAttribute.cs">
+      <Link>XmlRpcNullMappingAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\src\XmlRpcParameterAttribute.cs">
+      <Link>XmlRpcParameterAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\src\XmlRpcParameterInfo.cs">
+      <Link>XmlRpcParameterInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\src\XmlRpcParser.cs">
+      <Link>XmlRpcParser.cs</Link>
+    </Compile>
+    <Compile Include="..\src\XmlRpcRequest.cs">
+      <Link>XmlRpcRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\src\XmlRpcRequestEventArgs.cs">
+      <Link>XmlRpcRequestEventArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\src\XmlRpcRequestSerializer.cs">
+      <Link>XmlRpcRequestSerializer.cs</Link>
+    </Compile>
+    <Compile Include="..\src\XmlRpcResponse.cs">
+      <Link>XmlRpcResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\src\XmlRpcResponseDeserializer.cs">
+      <Link>XmlRpcResponseDeserializer.cs</Link>
+    </Compile>
+    <Compile Include="..\src\XmlRpcResponseEventArgs.cs">
+      <Link>XmlRpcResponseEventArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\src\XmlRpcReturnValueAttribute.cs">
+      <Link>XmlRpcReturnValueAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\src\XmlRpcSerializer.cs">
+      <Link>XmlRpcSerializer.cs</Link>
+    </Compile>
+    <Compile Include="..\src\XmlRpcStruct.cs">
+      <Link>XmlRpcStruct.cs</Link>
+    </Compile>
+    <Compile Include="..\src\XmlRpcTypeInfo.cs">
+      <Link>XmlRpcTypeInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\src\XmlRpcUrlAttribute.cs">
+      <Link>XmlRpcUrlAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\src\XmlRpcXmlWriter.cs">
+      <Link>XmlRpcXmlWriter.cs</Link>
+    </Compile>
+    <Compile Include="..\xmlrpcsilverlight\BrowsableAttribute.cs">
+      <Link>BrowsableAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\xmlrpcsilverlight\NonSerializedAttribute.cs">
+      <Link>NonSerializedAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\xmlrpcsilverlight\SerializableAttribute.cs">
+      <Link>SerializableAttribute.cs</Link>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="XmlRpcXmlReader.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />
+  <ProjectExtensions />
+  <Target Name="BeforeBuild">
+    <CreateItem Include="..\src\AssemblyBuildNumber.cs" Condition="'$(BuildingInsideVisualStudio)' == ''">
+      <Output TaskParameter="Include" ItemName="Compile" />
+    </CreateItem>
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+</Project>
