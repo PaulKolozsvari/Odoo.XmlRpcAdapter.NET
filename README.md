@@ -16,9 +16,6 @@ External dependencies (included in this repository):
 Examples (sample project included in this repository):
 
 ```C#
-
-static void Main(string[] args)
-        {
             try
             {
                 OdooXmlRpcAdapter odoo = new OdooXmlRpcAdapter(
