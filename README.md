@@ -1,7 +1,8 @@
 ### Odoo XML RPC Adapter for .NET
 
-This library is a .NET wrapper for the xmlrpc.net SDK (http://xml-rpc.net) which enables simplified XML RPC calls to Odoo (www.odoo.com).
-It allows for quick and easy calls to all the Odoo RPC functions listed in the Odoo documentation: https://www.odoo.com/documentation/12.0/webservices/odoo.html
+This library allows for easy integration from any .NET (C# or VB.NET) application into Odoo. The library a .NET wrapper for the xmlrpc.net SDK (http://xml-rpc.net) which enables 
+simplified XML RPC calls to Odoo (www.odoo.com). It allows for calls to any available Odoo RPC functions listed in the Odoo documentation: https://www.odoo.com/documentation/12.0/webservices/odoo.html
+No prior knowledge of XML RPC and/or Odoo RPC functions required i.e. just use the functions in this libary for easy integration into Odoo.
 
 Has been tested on Odoo version 11 & 12.
 
@@ -11,7 +12,7 @@ External dependencies (included in this repository):
 
   - [Figlut Server Toolkit](https://github.com/PaulKolozsvari/Figlut-Suite)
 
-Sample (included in this reporsitory)
+Examples (sample project included in this repository):
 
 ```C#
 
@@ -116,5 +117,3 @@ static void Main(string[] args)
             }
 
 ```
-
-**Voice technology stack overview:** 
