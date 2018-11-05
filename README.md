@@ -8,7 +8,7 @@ Has been tested on Odoo version 11 & 12.
 
 External dependencies (included in this repository): 
 
-  - [XML-RPC.NET version xml-rpc.net.3.0.0.270](http://xml-rpc.net)
+  - [XML-RPC.NET version 3.0.0.270](http://xml-rpc.net)
 
   - [Figlut Server Toolkit](https://github.com/PaulKolozsvari/Figlut-Suite)
 
