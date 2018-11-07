@@ -22,10 +22,17 @@
         {
             try
             {
+                //OdooXmlRpcAdapter odoo = new OdooXmlRpcAdapter(
+                //    "http://docker.odoo.zone:9669/xmlrpc/2/common",
+                //    "http://docker.odoo.zone:9669/xmlrpc/2/object",
+                //    "samd_dev",
+                //    "admin",
+                //    "admin",
+                //    "fixers");
                 OdooXmlRpcAdapter odoo = new OdooXmlRpcAdapter(
-                    "http://docker.odoo.zone:9669/xmlrpc/2/common",
-                    "http://docker.odoo.zone:9669/xmlrpc/2/object",
-                    "samd_dev",
+                    "http://docker.odoo.zone:11469/xmlrpc/2/common",
+                    "http://docker.odoo.zone:11469/xmlrpc/2/object",
+                    "samd_20181102",
                     "admin",
                     "admin",
                     "fixers");
