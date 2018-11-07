@@ -224,10 +224,7 @@
                 Password,
                 "res.partner",
                 "check_access_rights",
-                new object[][]
-                {
-                    new object[] { OdooObjectMethodName.READ }
-                },
+                OdooObjectMethodName.READ,
                 null,
                 null);
             return ConvertOdooResult<bool>(result);
@@ -320,7 +317,7 @@
         /// <returns>Returns an array of record identifiers of the records queried based on the specified criteria.</returns>
         public int[] Search(string modelName, Nullable<int> paginationOffset, Nullable<int> paginationLimit, params object[][] domainMembers)
         {
-            object result = Execute<int[]>(modelName, OdooObjectMethodName.SEARCH, domainMembers, paginationOffset, paginationLimit);
+            object result = Execute<object>(modelName, OdooObjectMethodName.SEARCH, domainMembers, paginationOffset, paginationLimit);
             if (result.GetType().Equals(typeof(int[])))
             {
                 return ConvertOdooResult<int[]>(result);
