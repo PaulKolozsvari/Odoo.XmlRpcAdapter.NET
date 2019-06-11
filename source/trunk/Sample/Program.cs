@@ -29,6 +29,8 @@
                 //    "admin",
                 //    "admin",
                 //    "fixers");
+                List<string> solutions;
+
                 OdooXmlRpcAdapter odoo = new OdooXmlRpcAdapter(
                     "http://docker.odoo.zone:11469/xmlrpc/2/common",
                     "http://docker.odoo.zone:11469/xmlrpc/2/object",
@@ -36,6 +38,13 @@
                     "admin",
                     "admin",
                     "fixers");
+                //OdooXmlRpcAdapter odoo = new OdooXmlRpcAdapter(
+                //    "http://docker.odoo.zone:11469/xmlrpc/2/common",
+                //    "http://docker.odoo.zone:11469/xmlrpc/2/object",
+                //    "samd_20181114",
+                //    "admin",
+                //    "admin",
+                //    "fixers");
                 if (!odoo.CheckAccessRights())
                 {
                     throw new Exception("Access rights to web service not granted.");

@@ -31,9 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CookComputing.XmlRpcV2">
-      <HintPath>..\SDK\xml-rpc.net.3.0.0.270\CookComputing.XmlRpcV2.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -54,6 +51,10 @@
     <ProjectReference Include="..\Odoo.XmlRpcAdapter\Odoo.XmlRpcAdapter.csproj">
       <Project>{ee66de91-811d-41c7-bae4-ab1f9af1c8f5}</Project>
       <Name>Odoo.XmlRpcAdapter</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\xml-rpc.net.3.0.0.270\src\xmlrpc.3.0.0.270.csproj">
+      <Project>{e34cbf43-8417-41bc-b342-4b06f9cef0d8}</Project>
+      <Name>xmlrpc.3.0.0.270</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

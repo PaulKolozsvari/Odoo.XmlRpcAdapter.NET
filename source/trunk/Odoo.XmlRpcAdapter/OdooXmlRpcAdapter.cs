@@ -38,6 +38,7 @@
             DatabaseName = databaseName;
             UserName = userName;
             Password = password;
+            UserAgent = userAgent;
         }
 
         #endregion //Constructors
