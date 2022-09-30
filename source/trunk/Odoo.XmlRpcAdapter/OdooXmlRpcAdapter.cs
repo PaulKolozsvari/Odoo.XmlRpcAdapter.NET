@@ -14,6 +14,9 @@
     using Odoo.XmlRpcAdapter.Contants;
     using Odoo.XmlRpcAdapter.Results;
     using Odoo.XmlRpcAdapter.Domain.Operators.Mappers;
+    using System.Net.Security;
+    using System.Net;
+    using System.Security.Cryptography.X509Certificates;
 
     #endregion //Using Directives
 
@@ -31,7 +34,8 @@
             string databaseName,
             string userName,
             string password,
-            string userAgent)
+            string userAgent,
+            bool bypassRemoteSslCertificateValidation)
         {
             XmlRpcCommonUrl = xmlRpcCommonUrl;
             XmlRpcObjectUrl = xmlRpcObjectUrl;
@@ -39,6 +43,16 @@
             UserName = userName;
             Password = password;
             UserAgent = userAgent;
+            BypassRemoteCertificateValidation = bypassRemoteSslCertificateValidation;
+            if (BypassRemoteCertificateValidation)
+            {
+                ServicePointManager.ServerCertificateValidationCallback += new RemoteCertificateValidationCallback(ValidateSslRemoteCertificate);
+                ServicePointManager.Expect100Continue = true;
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls
+                       | SecurityProtocolType.Tls11
+                       | SecurityProtocolType.Tls12
+                       | SecurityProtocolType.Ssl3;
+            }
         }
 
         #endregion //Constructors
@@ -52,6 +66,7 @@
         private string _userName;
         private string _password;
         private string _userAgent;
+        private bool _bypassRemoteSslCertificateValidation;
 
         #region Derived Fields
 
@@ -60,6 +75,8 @@
         #endregion //Derived Fields
 
         #endregion //Fields
+
+        #region Properties
 
         public string XmlRpcCommonUrl
         {
@@ -116,8 +133,17 @@
             get { return _userAgent; }
             set
             {
-                DataValidator.ValidateStringNotEmptyOrNull(value, EntityReader<OdooXmlRpcAdapter>.GetPropertyName(p => p.UserAgent, false), nameof(OdooXmlRpcAdapter));
+                //DataValidator.ValidateStringNotEmptyOrNull(value, EntityReader<OdooXmlRpcAdapter>.GetPropertyName(p => p.UserAgent, false), nameof(OdooXmlRpcAdapter));
                 _userAgent = value;
+            }
+        }
+
+        public bool BypassRemoteCertificateValidation
+        {
+            get { return _bypassRemoteSslCertificateValidation; }
+            set
+            {
+                _bypassRemoteSslCertificateValidation = value;
             }
         }
 
@@ -132,6 +158,8 @@
                 return _userId;
             }
         }
+
+        #endregion //Properties
 
         #region Methods
 
@@ -152,6 +180,12 @@
         }
 
         #region Static Methods
+
+        private static bool ValidateSslRemoteCertificate(object sender, X509Certificate cert, X509Chain chain, SslPolicyErrors policyErrors)
+        {
+            bool result = cert.Subject.Contains("odoo.com");
+            return result;
+        }
 
         public static T ConvertOdooResult<T>(object odooResult)
         {
@@ -219,15 +253,22 @@
 
         public bool CheckAccessRights()
         {
+            //object result = CreateObjectProxy().execute(
+            //    DatabaseName,
+            //    UserId.Value,
+            //    Password,
+            //    "res.partner",
+            //    "check_access_rights",
+            //    OdooObjectMethodName.READ,
+            //    null,
+            //    null);
             object result = CreateObjectProxy().execute(
                 DatabaseName,
                 UserId.Value,
                 Password,
                 "res.partner",
                 "check_access_rights",
-                OdooObjectMethodName.READ,
-                null,
-                null);
+                OdooObjectMethodName.READ);
             return ConvertOdooResult<bool>(result);
         }
 

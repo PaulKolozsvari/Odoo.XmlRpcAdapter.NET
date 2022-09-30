@@ -8,8 +8,9 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>Odoo.XmlRpcAdapter.Sample</RootNamespace>
     <AssemblyName>Odoo.XmlRpcAdapter.Sample</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>

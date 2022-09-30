@@ -37,7 +37,8 @@
                     "samd_20181102",
                     "admin",
                     "admin",
-                    "fixers");
+                    "fixers",
+                    bypassRemoteSslCertificateValidation: true);
                 //OdooXmlRpcAdapter odoo = new OdooXmlRpcAdapter(
                 //    "http://docker.odoo.zone:11469/xmlrpc/2/common",
                 //    "http://docker.odoo.zone:11469/xmlrpc/2/object",
